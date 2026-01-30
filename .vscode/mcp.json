@@ -1,0 +1,27 @@
+{
+  "servers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
+    },
+    "pdf-reader": {
+      "command": "npx",
+      "args": [
+        "@sylphx/pdf-reader-mcp"
+      ]
+    },
+    "pencil": {
+      "name": "pencil",
+      "transport": "stdio",
+      "command": "c:\\Users\\meday\\.windsurf\\extensions\\highagency.pencildev-0.6.19-universal\\out\\mcp-server-windows-x64.exe",
+      "args": [
+        "--ws-port",
+        "56773"
+      ],
+      "env": {}
+    }
+  }
+}
