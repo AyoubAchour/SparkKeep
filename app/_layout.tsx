@@ -22,6 +22,12 @@ export default function RootLayout() {
     SpaceGrotesk_700Bold,
   });
 
+  // ✅ Hooks must be called unconditionally before any returns
+  const convex = useMemo(
+    () => (convexUrl ? new ConvexReactClient(convexUrl) : null),
+    [convexUrl]
+  );
+
   useEffect(() => {
     initDb();
   }, []);
@@ -35,7 +41,7 @@ export default function RootLayout() {
     );
   }
 
-  if (!convexUrl) {
+  if (!convexUrl || !convex) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ fontSize: 16, textAlign: 'center' }}>
@@ -44,8 +50,6 @@ export default function RootLayout() {
       </View>
     );
   }
-
-  const convex = useMemo(() => new ConvexReactClient(convexUrl), [convexUrl]);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
